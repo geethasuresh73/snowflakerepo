@@ -18,7 +18,7 @@ def deploy_sql():
     print (sql_files)
     try:
         for sql_file in sql_files:
-            with open("sql/{sql_file}", 'r') as f:
+            with open(f"sql/{sql_file}", 'r') as f:
                 cursor.execute(f.read())
             print("Deployment successful 1.")
     except Exception as e:
