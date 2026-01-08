@@ -14,29 +14,18 @@ def deploy_sql():
 
     cursor = conn.cursor()
 
-    with open('sql/sample_deployment.sql', 'r') as sql_file:
-        sql_commands = sql_file.read()
+    sql_files = sorted([f for f in os.listdir('sql') if f.endswith('.sql')])
+    print (sql_files)
+    sql_commands = []
+    for sql_file in sql_files:
+        with open(os.path.join('sql', sql_file), 'r') as file:
+            sql_commands.append(file.read())
 
     try:
         cursor.execute(sql_commands)
         print("Deployment successful 1.")
     except Exception as e:
         print(f"Error during deployment 1: {e}")
-    finally:
-        cursor.close()
-        conn.close()
-
-
-    cursor = conn.cursor()
-
-    with open('sql/sample_deployment1.sql', 'r') as sql_file:
-        sql_commands = sql_file.read()
-
-    try:
-        cursor.execute(sql_commands)
-        print("Deployment successful 2.")
-    except Exception as e:
-        print(f"Error during deployment 2: {e}")
     finally:
         cursor.close()
         conn.close()
