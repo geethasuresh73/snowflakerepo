@@ -16,14 +16,11 @@ def deploy_sql():
 
     sql_files = sorted([f for f in os.listdir('sql') if f.endswith('.sql')])
     print (sql_files)
-    sql_commands = []
-    for sql_file in sql_files:
-        with open(os.path.join('sql', sql_file), 'r') as file:
-            sql_commands.append(file.read())
-
     try:
-        cursor.execute(sql_commands)
-        print("Deployment successful 1.")
+        for sql_file in sql_files:
+            with open(sql_file, 'r') as f:
+                cursor.execute(f.read())
+            print("Deployment successful 1.")
     except Exception as e:
         print(f"Error during deployment 1: {e}")
     finally:
