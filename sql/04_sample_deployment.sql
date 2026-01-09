@@ -19,10 +19,13 @@ CREATE CATALOG INTEGRATION glue_rest_catalog_int
 create or replace database DEMO_DBgeetha2;
 create or replace schema DEMO_DBgeetha2.PUBLIC;
 Describe CATALOG INTEGRATION glue_rest_catalog_int;
-create or replaceiceberg table s3tables_grocery
+create or replace iceberg table s3tables_grocery
   CATALOG='glue_rest_catalog_int'
   CATALOG_TABLE_NAME="grocery" 
   AUTO_REFRESH = TRUE;
 use database DEMO_DBgeetha2;
 use schema DEMO_DBgeetha2.PUBLIC;
 Select count(*) from s3tables_grocery;
+drop table s3tables_grocery
+drop database DEMO_DBgeetha2;
+drop schema DEMO_DBgeetha2.PUBLIC;
