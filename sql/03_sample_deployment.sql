@@ -16,6 +16,13 @@ CREATE CATALOG INTEGRATION glue_rest_catalog_int
   )
   REFRESH_INTERVAL_SECONDS = 30
   ENABLED = TRUE;
+create or replace database DEMO_DBgeetha1;
+create or replace schema DEMO_DBgeetha1.PUBLIC;
+Describe CATALOG INTEGRATION glue_rest_catalog_int;
+create or replaceiceberg table s3tables_grocery
+  CATALOG='glue_rest_catalog_int'
+  CATALOG_TABLE_NAME="grocery" 
+  AUTO_REFRESH = TRUE;
 use database DEMO_DBgeetha1;
 use schema DEMO_DBgeetha1.PUBLIC;
 Select count(*) from s3tables_grocery;
