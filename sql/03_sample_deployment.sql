@@ -26,6 +26,4 @@ create or replaceiceberg table s3tables_grocery
 use database DEMO_DBgeetha1;
 use schema DEMO_DBgeetha1.PUBLIC;
 Select count(*) from s3tables_grocery;
-close table s3tables_grocery;
-close database DEMO_DBgeetha1;
-close schema DEMO_DBgeetha1.PUBLIC;
+drop table s3tables_grocery;
