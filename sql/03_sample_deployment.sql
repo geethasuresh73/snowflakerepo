@@ -1,3 +1,4 @@
+drop table s3tables_grocery;
 Drop CATALOG INTEGRATION glue_rest_catalog_int;
 CREATE CATALOG INTEGRATION glue_rest_catalog_int
   CATALOG_SOURCE = ICEBERG_REST
