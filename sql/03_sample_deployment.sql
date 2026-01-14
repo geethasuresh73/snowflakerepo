@@ -1,9 +1,4 @@
-use database DEMO_DBgeetha2;
-use schema DEMO_DBgeetha2.PUBLIC;
-drop table s3tables_grocery;
-use database DEMO_DBgeetha1;
-use schema DEMO_DBgeetha1.PUBLIC;
-drop table s3tables_grocery;
+drop iceberg table if exists s3tables_grocery;
 Drop CATALOG INTEGRATION glue_rest_catalog_int;
 CREATE CATALOG INTEGRATION glue_rest_catalog_int
   CATALOG_SOURCE = ICEBERG_REST
@@ -25,7 +20,7 @@ CREATE CATALOG INTEGRATION glue_rest_catalog_int
 create or replace database DEMO_DBgeetha1;
 create or replace schema DEMO_DBgeetha1.PUBLIC;
 Describe CATALOG INTEGRATION glue_rest_catalog_int;
-create or replaceiceberg table s3tables_grocery
+create or replace iceberg table s3tables_grocery
   CATALOG='glue_rest_catalog_int'
   CATALOG_TABLE_NAME="grocery" 
   AUTO_RDrop CATALOG INTEGRATION glue_rest_catalog_int;EFRESH = TRUE;
