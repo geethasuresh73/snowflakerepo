@@ -1,6 +1,7 @@
 import snowflake.connector
 import os
 
+
 def deploy_sql():
     conn = snowflake.connector.connect(
         user=os.getenv('SNOWFLAKE_USER'),
